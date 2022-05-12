@@ -1,0 +1,15 @@
+.transactions__item_td {
+  padding: 15px;
+  text-align: center;
+  background-color: rgb(238, 246, 252);
+}
+
+.transaction__history_thead {
+  padding-bottom: 15px;
+  padding-top: 15px;
+  background-color: #ffffff;
+}
+
+.tableItem {
+  width: 200px;
+}

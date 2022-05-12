@@ -1,0 +1,22 @@
+.dot {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red {
+  composes: dot;
+  background-color: red;
+}
+
+.green {
+  composes: dot;
+  background-color: green;
+}
+
+.friend__list_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

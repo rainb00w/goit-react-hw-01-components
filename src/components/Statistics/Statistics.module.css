@@ -1,0 +1,16 @@
+.statistics__title {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.stat_list {
+  display: flex;
+}
+
+.item {
+  padding: 10px;
+}
