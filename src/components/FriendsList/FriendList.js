@@ -1,17 +1,14 @@
 import s from './FriendsList.module.css';
 import PropTypes from 'prop-types';
 
-export default function FriendList(data) {
+export default function FriendList(props) {
   return (
     <div className={s.friend_list}>
       <ul>
-        {data.data.map(item => (
+        {props.data.map(item => (
           <li className={s.friend__list_item} key={item.id}>
-            {item.isOnline ? (
-              <span className={`${s.green}`}></span>
-            ) : (
-              <span className={`${s.red}`}></span>
-            )}
+            <span className={item.isOnline ? `${s.green}` : `${s.red}`}></span>
+
             <img
               src={item.avatar}
               className={s.avatars}
@@ -27,5 +24,12 @@ export default function FriendList(data) {
 }
 
 FriendList.propTypes = {
-  data: PropTypes.array,
+  props: PropTypes.arrayOf(
+    PropTypes.shape({
+      item: PropTypes.string.isRequired,
+      isOnline: PropTypes.bool.isRequired,
+      avatar: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    })
+  ),
 };
