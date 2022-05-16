@@ -1,24 +1,23 @@
-import styles from './Transactions.module.css';
+import s from './Transactions.module.css';
 import PropTypes from 'prop-types';
 
-export default function TransactionHistory(data) {
-  // console.log('Transactions', data.data);
+export default function TransactionHistory(props) {
   return (
-    <table className={styles.transaction_history}>
+    <table className={s.transaction_history}>
       <thead>
         <tr>
-          <th className={styles.transaction__history_thead}>Type</th>
-          <th className={styles.transaction__history_thead}>Amount</th>
-          <th className={styles.transaction__history_thead}>Currency</th>
+          <th className={s.transaction__history_thead}>Type</th>
+          <th className={s.transaction__history_thead}>Amount</th>
+          <th className={s.transaction__history_thead}>Currency</th>
         </tr>
       </thead>
 
       <tbody>
-        {data.data.map(item => (
-          <tr className={styles.transactions__item_tr} key={item.id}>
-            <td className={styles.transactions__item_td}>{item.type}</td>
-            <td className={styles.transactions__item_td}>{item.amount}</td>
-            <td className={styles.transactions__item_td}>{item.currency}</td>
+        {props.data.map(({ id, type, amount, currency }) => (
+          <tr className={s.transactions__item_tr} key={id}>
+            <td className={s.transactions__item_td}>{type}</td>
+            <td className={s.transactions__item_td}>{amount}</td>
+            <td className={s.transactions__item_td}>{currency}</td>
           </tr>
         ))}
       </tbody>
@@ -27,7 +26,7 @@ export default function TransactionHistory(data) {
 }
 
 TransactionHistory.propTypes = {
-  data: PropTypes.arrayOf(
+  props: PropTypes.arrayOf(
     PropTypes.shape({
       type: PropTypes.string.isRequired,
       amount: PropTypes.string.isRequired,

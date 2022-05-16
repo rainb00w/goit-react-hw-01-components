@@ -1,21 +1,21 @@
-import styles from './Statistics.module.css';
+import s from './Statistics.module.css';
 import PropTypes from 'prop-types';
 
 export default function Statistics({ data, title }) {
-  data.flatMap(item => console.log(item));
+  // data.map(item => console.log(item));
   return (
-    <section className={styles.statistics}>
-      {title && <h2 className={styles.statistics__title}>{title}</h2>}
+    <section className={s.statistics}>
+      {title && <h2 className={s.statistics__title}>{title}</h2>}
 
-      <ul className={styles.stat_list}>
-        {data.map(item => (
+      <ul className={s.stat_list}>
+        {data.map(({ id, label, percentage }) => (
           <li
-            className={styles.item}
-            key={item.id}
+            className={s.item}
+            key={id}
             style={{ backgroundColor: getRandomHexColor() }}
           >
-            <span className={styles.label}>{item.label}</span>
-            <p className={styles.percentage}>{item.percentage} % </p>
+            <span className={s.label}>{label}</span>
+            <p className={s.percentage}>{percentage} % </p>
           </li>
         ))}
       </ul>

@@ -1,31 +1,37 @@
 import PropTypes from 'prop-types';
-import styles from './Profile.module.css';
+import s from './Profile.module.css';
 
-export default function Profile({ username, tag, location, avatar, stats }) {
+export default function Profile({
+  username,
+  tag,
+  location,
+  avatar,
+  stats: { followers, views, likes },
+}) {
   return (
-    <div className={styles.profile}>
-      <div className={styles.description}>
-        <img src={avatar} alt={styles.avatar} className={styles.avatar} />
-        <p className={styles.profile__name}>{username}</p>
-        <p className={styles.tag}>{tag}</p>
-        <p className={styles.location}>{location}</p>
+    <div className={s.profile}>
+      <div className={s.description}>
+        <img src={avatar} alt={s.avatar} className={s.avatar} />
+        <p className={s.profile__name}>{username}</p>
+        <p className={s.tag}>{tag}</p>
+        <p className={s.location}>{location}</p>
       </div>
 
-      <ul className={styles.profile__stats}>
-        <li className={styles.profile__stats_li}>
-          <span className={styles.label}>Followers</span>
+      <ul className={s.profile__stats}>
+        <li className={s.profile__stats_li}>
+          <span className={s.label}>Followers</span>
           <br />
-          <span className={styles.quantity}>{stats.followers}</span>
+          <span className={s.quantity}>{followers}</span>
         </li>
-        <li className={styles.profile__stats_li}>
-          <span className={styles.label}>Views</span>
+        <li className={s.profile__stats_li}>
+          <span className={s.label}>Views</span>
           <br />
-          <span className={styles.quantity}>{stats.views}</span>
+          <span className={s.quantity}>{views}</span>
         </li>
-        <li className={styles.profile__stats_li}>
-          <span className={styles.label}>Likes</span>
+        <li className={s.profile__stats_li}>
+          <span className={s.label}>Likes</span>
           <br />
-          <span className={styles.quantity}>{stats.likes}</span>
+          <span className={s.quantity}>{likes}</span>
         </li>
       </ul>
     </div>
@@ -33,11 +39,13 @@ export default function Profile({ username, tag, location, avatar, stats }) {
 }
 
 Profile.propTypes = {
-  username: PropTypes.string,
-  tag: PropTypes.string,
-  location: PropTypes.string,
-  avatar: PropTypes.string,
-  followers: PropTypes.number,
-  views: PropTypes.number,
-  likes: PropTypes.number,
+  username: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  stats: PropTypes.shape({
+    followers: PropTypes.number.isRequired,
+    views: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
+  }),
 };
